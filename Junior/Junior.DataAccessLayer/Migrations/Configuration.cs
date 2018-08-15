@@ -14,55 +14,56 @@ namespace Junior.DataAccessLayer.Migrations
 
         protected override void Seed(DatabaseContext context)
         {
-        //    //Insert elements
-        //    var elements = new List<Element>()
-        //    {
-        //        new Element()
-        //        {
-        //            Name = "Hydrogen"
-        //        },
-        //        new Element()
-        //        {
-        //            Name = "Nitrogen"
-        //        },
-        //        new Element()
-        //        {
-        //            Name = "Carbon"
-        //        },
-        //        new Element()
-        //        {
-        //            Name = "Sodium"
-        //        },
-        //        new Element()
-        //        {
-        //            Name = "Oxygen"
-        //        },
-        //    };
-        //    context.Elements.AddRange(elements);
+            //Uncomment following lines to seed database
+            //    //Insert elements
+            //    var elements = new List<Element>()
+            //    {
+            //        new Element()
+            //        {
+            //            Name = "Hydrogen"
+            //        },
+            //        new Element()
+            //        {
+            //            Name = "Nitrogen"
+            //        },
+            //        new Element()
+            //        {
+            //            Name = "Carbon"
+            //        },
+            //        new Element()
+            //        {
+            //            Name = "Sodium"
+            //        },
+            //        new Element()
+            //        {
+            //            Name = "Oxygen"
+            //        },
+            //    };
+            //    context.Elements.AddRange(elements);
 
-        //    //Insert compound types
-        //    var types = new List<CompoundType>()
-        //    {
-        //        new CompoundType()
-        //        {
-        //            Name = "Covalent"
-        //        },
-        //        new CompoundType()
-        //        {
-        //            Name = "Ionic"
-        //        },
-        //        new CompoundType()
-        //        {
-        //            Name = "Organic"
-        //        },
-        //        new CompoundType()
-        //        {
-        //            Name = "Inorganic"
-        //        },
-        //    };
-        //    context.CompoundTypes.AddRange(types);
+            //    //Insert compound types
+            //    var types = new List<CompoundType>()
+            //    {
+            //        new CompoundType()
+            //        {
+            //            Name = "Covalent"
+            //        },
+            //        new CompoundType()
+            //        {
+            //            Name = "Ionic"
+            //        },
+            //        new CompoundType()
+            //        {
+            //            Name = "Organic"
+            //        },
+            //        new CompoundType()
+            //        {
+            //            Name = "Inorganic"
+            //        },
+            //    };
+            //    context.CompoundTypes.AddRange(types);
 
-        //    context.SaveChanges();
+            //    context.SaveChanges();
         }
     }
 }

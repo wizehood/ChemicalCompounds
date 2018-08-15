@@ -8,7 +8,6 @@ namespace Junior.DataAccessLayer.Context
         public DatabaseContext() : base("DatabaseContext")
         {
             Configuration.LazyLoadingEnabled = false;
-
         }
 
         public DbSet<Compound> Compounds { get; set; }

@@ -30,12 +30,12 @@
         @for (int i = 0; i < 2; i++)
         {
             <div class="form-group chemical-element">
-                @Html.LabelFor(model => model.Elements[i].ElementQuantity, "Element quantity", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Elements[i].Quantity, "Element quantity", htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-1">
-                    @Html.TextBoxFor(model => model.Elements[i].ElementQuantity, htmlAttributes: new { @Value = 1, @type = "number", @min = "1", @class = "form-control", style = "width:5em" })
+                    @Html.TextBoxFor(model => model.Elements[i].Quantity, htmlAttributes: new { @Value = 1, @type = "number", @min = "1", @class = "form-control", style = "width:5em" })
                 </div>
                 <div class="col-md-2">
-                    @Html.DropDownListFor(model => model.Elements[i].ElementId, new SelectList(ViewBag.ElementNames, "Id", "Name"), htmlAttributes: new { @class = "form-control" })
+                    @Html.DropDownListFor(model => model.Elements[i].Id, new SelectList(ViewBag.ElementNames, "Id", "Name"), htmlAttributes: new { @class = "form-control" })
                 </div>
             </div>
         }

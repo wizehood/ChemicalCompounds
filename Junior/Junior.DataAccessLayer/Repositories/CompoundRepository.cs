@@ -89,7 +89,7 @@ namespace Junior.DataAccessLayer.Repositories
             }
         }
 
-        public List<CompoundElement> GetCompoundElementByCompoundId(Guid id)
+        public List<CompoundElement> GetCompoundElementsByCompoundId(Guid id)
         {
             try
             {
@@ -152,8 +152,8 @@ namespace Junior.DataAccessLayer.Repositories
                         context.CompoundElements.Add(new CompoundElement()
                         {
                             CompoundId = compoundId,
-                            ElementId = element.ElementId,
-                            ElementQuantity = element.ElementQuantity
+                            ElementId = element.Id,
+                            ElementQuantity = element.Quantity
                         });
                     }
 
@@ -177,7 +177,7 @@ namespace Junior.DataAccessLayer.Repositories
                     //Map to Compound
                     var compound = new Compound()
                     {
-                        Id = entity.Id,
+                        Id = entity.CompoundId,
                         Name = entity.Name,
                         TypeId = entity.TypeId
                     };
@@ -190,10 +190,10 @@ namespace Junior.DataAccessLayer.Repositories
                     {
                         var compoundElement = new CompoundElement()
                         {
-                            Id = element.Id,
-                            CompoundId = compound.Id,
-                            ElementId = element.ElementId,
-                            ElementQuantity = element.ElementQuantity
+                            Id = element.CompoundElementId,
+                            CompoundId = entity.CompoundId,
+                            ElementId = element.Id,
+                            ElementQuantity = element.Quantity
                         };
                         context.CompoundElements.Attach(compoundElement);
                         context.Entry(compoundElement).State = EntityState.Modified;

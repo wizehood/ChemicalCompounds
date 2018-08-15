@@ -55,7 +55,7 @@
             $.get("/Compound/Delete/" + id)
                 .done(function (success) {
                     if (success) {
-                        //Clear the table and pull the data once again
+                        //Clear the table and pull data once again
                         var table = document.getElementsByClassName("table")[0];
                         while (table.hasChildNodes()) {
                             table.removeChild(table.lastChild);
