@@ -15,8 +15,8 @@ namespace Junior.DataAccessLayer.Migrations
         protected override void Seed(DatabaseContext context)
         {
             //Uncomment following lines to seed database
-            //    //Insert elements
-            //    var elements = new List<Element>()
+            ////Insert elements
+            //var elements = new List<Element>()
             //    {
             //        new Element()
             //        {
@@ -39,10 +39,10 @@ namespace Junior.DataAccessLayer.Migrations
             //            Name = "Oxygen"
             //        },
             //    };
-            //    context.Elements.AddRange(elements);
+            //context.Elements.AddRange(elements);
 
-            //    //Insert compound types
-            //    var types = new List<CompoundType>()
+            ////Insert compound types
+            //var types = new List<CompoundType>()
             //    {
             //        new CompoundType()
             //        {
@@ -61,9 +61,9 @@ namespace Junior.DataAccessLayer.Migrations
             //            Name = "Inorganic"
             //        },
             //    };
-            //    context.CompoundTypes.AddRange(types);
+            //context.CompoundTypes.AddRange(types);
 
-            //    context.SaveChanges();
+            //context.SaveChanges();
         }
     }
 }

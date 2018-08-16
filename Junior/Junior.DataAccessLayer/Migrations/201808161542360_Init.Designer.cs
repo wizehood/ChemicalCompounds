@@ -13,7 +13,7 @@ namespace Junior.DataAccessLayer.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201808150927110_Init"; }
+            get { return "201808161542360_Init"; }
         }
         
         string IMigrationMetadata.Source

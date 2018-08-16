@@ -30,6 +30,27 @@ namespace Junior.DataAccessLayer.Repositories
             }
         }
 
+        public List<Compound> GetAllCompoundsByTypeId(Guid typeId)
+        {
+            try
+            {
+                using (var context = new DatabaseContext())
+                {
+                    var entities = context.Compounds
+                        .OrderBy(c => c.Name)
+                        .Where(c => c.Deleted == false)
+                        .Where(c => c.TypeId == typeId)
+                        .ToList();
+
+                    return entities;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         public List<CompoundType> GetAllCompoundTypes()
         {
             try
