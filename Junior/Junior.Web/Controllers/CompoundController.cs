@@ -1,6 +1,8 @@
-﻿using Junior.DataAccessLayer.Repositories;
+﻿using AutoMapper;
+using Junior.DataAccessLayer.Repositories;
 using Junior.SharedModels.DtoModels;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -20,13 +22,9 @@ namespace Junior.Web.Controllers
             var compounds = repo.GetAllCompounds();
 
             //Map to DTO object
-            var compoundDtos = compounds.Select(c => new CompoundDto()
-            {
-                Id = c.Id,
-                Name = c.Name
-            }).ToList();
+            var compoundDtos = Mapper.Map<List<CompoundDto>>(compounds);
 
-            return Json(compounds, JsonRequestBehavior.AllowGet);
+            return Json(compoundDtos, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Create()
@@ -75,22 +73,17 @@ namespace Junior.Web.Controllers
             }
 
             //Map to DTO object
-            var compoundElement = new CompoundElementDto()
+            var compoundElementDto = new CompoundElementDto()
             {
                 CompoundId = compoundElements.First().Compound.Id,
                 Name = compoundElements.First().Compound.Name,
                 TypeId = compoundElements.First().Compound.TypeId,
-                Elements = compoundElements.Select(ce => new ElementDto
-                {
-                    Id = ce.ElementId,
-                    CompoundElementId = ce.Id,
-                    Quantity = ce.ElementQuantity
-                }).ToList()
+                Elements = Mapper.Map<List<ElementDto>>(compoundElements)
             };
 
             PopulateCombos();
 
-            return View(compoundElement);
+            return View(compoundElementDto);
         }
 
         [HttpPost]

@@ -62,11 +62,12 @@
 
 <script>
     var addElement = function () {
-        //Clone element and replace indices
+        //Clone element 
         var elements = document.getElementsByClassName("chemical-element");
         var form = document.getElementsByClassName("form-horizontal")[0];
         var clone = elements[0].cloneNode(true);
 
+        //Replace indices
         var inputElement = clone.getElementsByTagName("input")[0];
         inputElement.id = inputElement.id.replace(0, elements.length);
         inputElement.name = inputElement.name.replace(0, elements.length);

@@ -1,4 +1,6 @@
-﻿using Junior.DataAccessLayer.Repositories;
+﻿using AutoMapper;
+using Junior.DataAccessLayer.Repositories;
+using Junior.SharedModels.DtoModels;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
@@ -19,8 +21,9 @@ namespace Junior.WebAPI.Controllers
         public IHttpActionResult GetAll()
         {
             var compounds = repo.GetAllCompounds();
+            var compoundDtos= Mapper.Map<List<CompoundDto>>(compounds);
 
-            return Ok(compounds);
+            return Ok(compoundDtos);
         }
 
         /// <summary>  
@@ -31,8 +34,9 @@ namespace Junior.WebAPI.Controllers
         public IHttpActionResult GetByTypeId(Guid id)
         {
             var compounds = repo.GetAllCompoundsByTypeId(id);
+            var compoundDtos = Mapper.Map<List<CompoundDto>>(compounds);
 
-            return Ok(compounds);
+            return Ok(compoundDtos);
         }
 
         /// <summary>  

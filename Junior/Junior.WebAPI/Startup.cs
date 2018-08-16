@@ -1,4 +1,7 @@
-﻿using Microsoft.Owin;
+﻿using AutoMapper;
+using Junior.SharedModels.DomainModels;
+using Junior.SharedModels.DtoModels;
+using Microsoft.Owin;
 using Microsoft.Owin.Cors;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -52,6 +55,12 @@ namespace Junior.WebAPI
                 c.IncludeXmlComments(GetXmlCommentsPath());
             })
             .EnableSwaggerUi();
+
+            //Automapper config
+            Mapper.Initialize(mapper =>
+            {
+                mapper.CreateMap<Compound, CompoundDto>();
+            });
 
             app.UseCors(CorsOptions.AllowAll);
             app.UseWebApi(config);

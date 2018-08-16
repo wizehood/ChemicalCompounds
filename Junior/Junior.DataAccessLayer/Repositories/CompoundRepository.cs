@@ -1,4 +1,5 @@
-﻿using Junior.DataAccessLayer.Context;
+﻿using AutoMapper;
+using Junior.DataAccessLayer.Context;
 using Junior.SharedModels.DomainModels;
 using Junior.SharedModels.DtoModels;
 using System;
@@ -154,28 +155,23 @@ namespace Junior.DataAccessLayer.Repositories
             {
                 using (var context = new DatabaseContext())
                 {
-                    //First save data to Compounds table
-                    var compound = new Compound()
-                    {
-                        Name = entity.Name,
-                        TypeId = entity.TypeId
-                    };
+                    //First map to Compound object and save to Compounds table
+                    var compound = Mapper.Map<Compound>(entity);
 
+                    //Get resulting id
                     var compoundId = CreateCompound(compound);
                     if (compoundId.Equals(Guid.Empty))
                     {
                         return false;
                     }
 
-                    //Then save data to binding CompoundElements table
+                    //Then map to CompoundElement and save to binding CompoundElements table
                     foreach (var element in entity.Elements)
                     {
-                        context.CompoundElements.Add(new CompoundElement()
-                        {
-                            CompoundId = compoundId,
-                            ElementId = element.Id,
-                            ElementQuantity = element.Quantity
-                        });
+                        var compoundElement = Mapper.Map<CompoundElement>(element);
+                        compoundElement.CompoundId = compoundId;
+
+                        context.CompoundElements.Add(compoundElement);
                     }
 
                     context.SaveChanges();
@@ -195,29 +191,17 @@ namespace Junior.DataAccessLayer.Repositories
             {
                 using (var context = new DatabaseContext())
                 {
-                    //Map to Compound
-                    var compound = new Compound()
-                    {
-                        Id = entity.CompoundId,
-                        Name = entity.Name,
-                        TypeId = entity.TypeId
-                    };
+                    //First update compound
+                    var compound = context.Compounds.Find(entity.CompoundId);
+                    compound.Name = entity.Name;
+                    compound.TypeId = entity.TypeId;;
 
-                    context.Compounds.Attach(compound);
-                    context.Entry(compound).State = EntityState.Modified;
-
-                    //Map to CompoundElement
+                    //Then update compound elements
                     foreach (var element in entity.Elements)
                     {
-                        var compoundElement = new CompoundElement()
-                        {
-                            Id = element.CompoundElementId,
-                            CompoundId = entity.CompoundId,
-                            ElementId = element.Id,
-                            ElementQuantity = element.Quantity
-                        };
-                        context.CompoundElements.Attach(compoundElement);
-                        context.Entry(compoundElement).State = EntityState.Modified;
+                        var compoundElement = context.CompoundElements.Find(element.CompoundElementId);
+                        compoundElement.ElementId = element.Id;
+                        compoundElement.ElementQuantity = element.Quantity;
                     }
 
                     context.SaveChanges();
