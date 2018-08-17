@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Junior.SharedModels.DtoModels
 {
-    public class CompoundElementDto
+    public class CompoundElementPartialDto
     {
         public Guid CompoundId { get; set; }
 
@@ -13,6 +13,8 @@ namespace Junior.SharedModels.DtoModels
 
         public Guid TypeId { get; set; }
 
-        public List<ElementDto> Elements { get; set; }
+        public double BoilingTemperature { get; set; }
+
+        public List<ElementPartialDto> Elements { get; set; }
     }
 }

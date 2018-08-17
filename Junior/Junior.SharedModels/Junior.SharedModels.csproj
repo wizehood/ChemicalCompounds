@@ -42,12 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DtoModels\CompoundDto.cs" />
-    <Compile Include="DtoModels\CompoundElementDto.cs" />
+    <Compile Include="DtoModels\CompoundElementPartialDto.cs" />
     <Compile Include="DtoModels\ElementDto.cs" />
+    <Compile Include="DtoModels\ElementPartialDto.cs" />
     <Compile Include="DomainModels\Compound.cs" />
     <Compile Include="DomainModels\CompoundElement.cs" />
     <Compile Include="DomainModels\CompoundType.cs" />
     <Compile Include="DomainModels\Element.cs" />
+    <Compile Include="Dummy\Dummy.cs" />
+    <Compile Include="Enums\Enums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

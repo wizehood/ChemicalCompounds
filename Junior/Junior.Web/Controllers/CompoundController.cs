@@ -1,17 +1,28 @@
 ﻿using AutoMapper;
 using Junior.DataAccessLayer.Repositories;
 using Junior.SharedModels.DtoModels;
+using Junior.Web.Utility;
 using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using static Junior.SharedModels.Enums.Enums;
 
 namespace Junior.Web.Controllers
 {
     public class CompoundController : Controller
     {
-        private CompoundRepository repo = new CompoundRepository();
+        private CompoundRepository _repo = new CompoundRepository();
+
+        //Dropdown list
+        private static IEnumerable<SelectListItem> _temperatureTypeList = Enum.GetValues(typeof(TemperatureType))
+           .Cast<TemperatureType>()
+           .Select(e => new SelectListItem()
+           {
+               Text = e == TemperatureType.Kelvin ? "K" : e == TemperatureType.Celsius ? "°C" : "°F",
+               Value = ((int)e).ToString()
+           });
 
         public ActionResult Index()
         {
@@ -20,11 +31,11 @@ namespace Junior.Web.Controllers
             return View();
         }
 
-        public ActionResult GetAllCompounds()
+        public ActionResult GetAll()
         {
-            Log.Information("GET Compound/GetAllCompounds triggered");
+            Log.Information("GET Compound/GetAll triggered");
 
-            var compounds = repo.GetAllCompounds();
+            var compounds = _repo.GetAllCompounds();
 
             //Map to DTO object
             var compoundDtos = Mapper.Map<List<CompoundDto>>(compounds);
@@ -44,7 +55,7 @@ namespace Junior.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CompoundElementDto compoundElement)
+        public ActionResult Create(CompoundElementPartialDto compoundElement)
         {
             Log.Information("POST Compound/Create triggered");
 
@@ -52,7 +63,7 @@ namespace Junior.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                bool isSuccess = repo.CreateCompoundElement(compoundElement);
+                bool isSuccess = _repo.CreateCompoundElement(compoundElement);
                 if (isSuccess)
                 {
                     return Redirect("Index");
@@ -70,7 +81,7 @@ namespace Junior.Web.Controllers
         {
             Log.Information("GET Compound/Delete triggered");
 
-            bool isSuccess = repo.DeleteCompound(id);
+            bool isSuccess = _repo.DeleteCompound(id);
 
             return Json(isSuccess, JsonRequestBehavior.AllowGet);
         }
@@ -79,29 +90,31 @@ namespace Junior.Web.Controllers
         {
             Log.Information("GET Compound/Edit triggered");
 
-            var compoundElements = repo.GetCompoundElementsByCompoundId(id);
+            var compoundElements = _repo.GetCompoundElementsByCompoundId(id);
             if (compoundElements.Count == 0)
             {
                 return View("Error");
             }
 
             //Map to DTO object
-            var compoundElementDto = new CompoundElementDto()
+            var compoundElementDto = new CompoundElementPartialDto()
             {
                 CompoundId = compoundElements.First().Compound.Id,
                 Name = compoundElements.First().Compound.Name,
                 TypeId = compoundElements.First().Compound.TypeId,
-                Elements = Mapper.Map<List<ElementDto>>(compoundElements)
+                Elements = Mapper.Map<List<ElementPartialDto>>(compoundElements)
             };
 
             PopulateCombos();
+
+            ViewBag.TemperatureTypes = _temperatureTypeList;
 
             return View(compoundElementDto);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(CompoundElementDto compoundElement)
+        public ActionResult Edit(CompoundElementPartialDto compoundElement)
         {
             Log.Information("POST Compound/Edit triggered");
 
@@ -109,7 +122,7 @@ namespace Junior.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                bool isSuccess = repo.UpdateCompoundElement(compoundElement);
+                bool isSuccess = _repo.UpdateCompoundElement(compoundElement);
                 if (isSuccess)
                 {
                     return Redirect("/Compound/Index");
@@ -122,14 +135,22 @@ namespace Junior.Web.Controllers
             return View(compoundElement);
         }
 
+        public ActionResult GetBoilingTemperature(Guid compoundId, TemperatureType type)
+        {
+            Log.Information("GET Compound/GetBoilingTemperature triggered");
 
+            var compoundElements = _repo.GetCompoundElementsByCompoundId(compoundId);
+            double boilingTemperature = CompoundCalculator.GetBoilingTemperature(compoundElements, type);
+
+            return Json(boilingTemperature, JsonRequestBehavior.AllowGet);
+        }
 
         public void PopulateCombos()
         {
-            var types = repo.GetAllCompoundTypes();
+            var types = _repo.GetAllCompoundTypes();
             ViewBag.Types = types;
 
-            var names = repo.GetAllElements();
+            var names = _repo.GetAllElements();
             ViewBag.ElementNames = names;
         }
     }

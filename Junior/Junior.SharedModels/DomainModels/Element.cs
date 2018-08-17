@@ -12,5 +12,7 @@ namespace Junior.SharedModels.DomainModels
 
         [Required]
         public string Name { get; set; }
+
+        public double BoilingTemperatureK { get; set; }
     }
 }

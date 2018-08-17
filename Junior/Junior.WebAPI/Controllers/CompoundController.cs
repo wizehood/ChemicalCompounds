@@ -13,7 +13,7 @@ namespace Junior.WebAPI.Controllers
     /// </summary> 
     public class CompoundController : ApiController
     {
-        private CompoundRepository repo = new CompoundRepository();
+        private CompoundRepository _repo = new CompoundRepository();
 
         /// <summary>  
         /// Get all compounds  
@@ -23,7 +23,7 @@ namespace Junior.WebAPI.Controllers
         {
             Log.Information("GET Compound/GetAll triggered");
 
-            var compounds = repo.GetAllCompounds();
+            var compounds = _repo.GetAllCompounds();
             var compoundDtos= Mapper.Map<List<CompoundDto>>(compounds);
 
             return Ok(compoundDtos);
@@ -38,7 +38,7 @@ namespace Junior.WebAPI.Controllers
         {
             Log.Information("GET Compound/GetByTypeId triggered");
 
-            var compounds = repo.GetAllCompoundsByTypeId(id);
+            var compounds = _repo.GetAllCompoundsByTypeId(id);
             var compoundDtos = Mapper.Map<List<CompoundDto>>(compounds);
 
             return Ok(compoundDtos);
@@ -52,7 +52,7 @@ namespace Junior.WebAPI.Controllers
         {
             Log.Information("GET Compound/GetTypes triggered");
 
-            var types = repo.GetAllCompoundTypes();
+            var types = _repo.GetAllCompoundTypes();
 
             return Ok(types);
         }

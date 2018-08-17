@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Junior.SharedModels.DtoModels
 {
     public class ElementDto
     {
-        public Guid Id { get; set; }
+        public string Name { get; set; }
 
-        public Guid CompoundElementId { get; set; }
-
-        public int Quantity { get; set; }
+        public double BoilingTemperature { get; set; }
     }
 }

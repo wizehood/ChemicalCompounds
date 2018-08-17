@@ -2,6 +2,7 @@ namespace Junior.DataAccessLayer.Migrations
 {
     using Junior.DataAccessLayer.Context;
     using Junior.SharedModels.DomainModels;
+    using Junior.SharedModels.Dummy;
     using System.Collections.Generic;
     using System.Data.Entity.Migrations;
 
@@ -15,54 +16,8 @@ namespace Junior.DataAccessLayer.Migrations
         protected override void Seed(DatabaseContext context)
         {
             //Uncomment following lines to seed database
-            ////Insert elements
-            //var elements = new List<Element>()
-            //    {
-            //        new Element()
-            //        {
-            //            Name = "Hydrogen"
-            //        },
-            //        new Element()
-            //        {
-            //            Name = "Nitrogen"
-            //        },
-            //        new Element()
-            //        {
-            //            Name = "Carbon"
-            //        },
-            //        new Element()
-            //        {
-            //            Name = "Sodium"
-            //        },
-            //        new Element()
-            //        {
-            //            Name = "Oxygen"
-            //        },
-            //    };
-            //context.Elements.AddRange(elements);
-
-            ////Insert compound types
-            //var types = new List<CompoundType>()
-            //    {
-            //        new CompoundType()
-            //        {
-            //            Name = "Covalent"
-            //        },
-            //        new CompoundType()
-            //        {
-            //            Name = "Ionic"
-            //        },
-            //        new CompoundType()
-            //        {
-            //            Name = "Organic"
-            //        },
-            //        new CompoundType()
-            //        {
-            //            Name = "Inorganic"
-            //        },
-            //    };
-            //context.CompoundTypes.AddRange(types);
-
+            //context.CompoundTypes.AddRange(Dummy.CompoundTypes);
+            //context.Elements.AddRange(Dummy.Elements);
             //context.SaveChanges();
         }
     }

@@ -13,8 +13,7 @@ namespace Junior.Web
             var assemblyFolder = AppDomain.CurrentDomain.BaseDirectory;
 
             var log = new LoggerConfiguration()
-                .WriteTo.RollingFile($@"{assemblyFolder}Logs\logs.txt",
-                                    outputTemplate: "[{Timestamp:dd-MM-yyyy HH:mm:ss}] {Level:u3}: {Message:lj} {Exception} {NewLine}")
+                .WriteTo.RollingFile($@"{assemblyFolder}Logs\logs.txt", outputTemplate: "[{Timestamp:dd-MM-yyyy HH:mm:ss}] {Level:u3}: {Message:lj} {Exception} {NewLine}")
                 .CreateLogger();
 
             Log.Logger = log;

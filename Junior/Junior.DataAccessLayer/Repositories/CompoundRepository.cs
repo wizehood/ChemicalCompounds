@@ -137,6 +137,7 @@ namespace Junior.DataAccessLayer.Repositories
                 {
                     var entities = context.CompoundElements
                         .Include(ce => ce.Compound)
+                        .Include(ce => ce.Element)
                         .Where(ce => ce.CompoundId == id)
                         .ToList();
 
@@ -153,7 +154,7 @@ namespace Junior.DataAccessLayer.Repositories
         public Guid CreateCompound(Compound entity)
         {
             Log.Information("CreateCompound triggered {@entity}", entity);
-            
+
             try
             {
                 using (var context = new DatabaseContext())
@@ -171,7 +172,7 @@ namespace Junior.DataAccessLayer.Repositories
             }
         }
 
-        public bool CreateCompoundElement(CompoundElementDto entity)
+        public bool CreateCompoundElement(CompoundElementPartialDto entity)
         {
             Log.Information("CreateCompoundElement triggered {@entity}", entity);
 
@@ -210,7 +211,7 @@ namespace Junior.DataAccessLayer.Repositories
             }
         }
 
-        public bool UpdateCompoundElement(CompoundElementDto entity)
+        public bool UpdateCompoundElement(CompoundElementPartialDto entity)
         {
             Log.Information("UpdateCompoundElement triggered {@entity}", entity);
 
@@ -221,7 +222,7 @@ namespace Junior.DataAccessLayer.Repositories
                     //First update compound
                     var compound = context.Compounds.Find(entity.CompoundId);
                     compound.Name = entity.Name;
-                    compound.TypeId = entity.TypeId;;
+                    compound.TypeId = entity.TypeId;
 
                     //Then update compound elements
                     foreach (var element in entity.Elements)
@@ -258,7 +259,7 @@ namespace Junior.DataAccessLayer.Repositories
                     return true;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Log.Error(ex, "DeleteCompound");
                 return false;

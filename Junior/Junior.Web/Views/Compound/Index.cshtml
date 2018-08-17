@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Junior.SharedModels.DomainModels.Compound>
 
 @{
-    ViewBag.Title = "List of compounds";
+    ViewBag.Title = "Compound list";
 }
 
 <h2>List of compounds</h2>
@@ -11,19 +11,16 @@
 </p>
 
 <table class="table">
-    <tr>
-        <th>
-            Name
-        </th>
-        <th></th>
-    </tr>
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody></tbody>
 </table>
-
-<style>
-    td {
-        padding: 0.5em 0 0.5em;
-    }
-</style>
 
 <script>
     $(document).ready(function () {
@@ -31,17 +28,17 @@
     });
 
     var getCompounds = function () {
-        $.get("/Compound/GetAllCompounds")
+        $.get("/Compound/GetAll")
             .done(function (compounds) {
                 compounds.forEach(compound => {
-                    var table = document.getElementsByClassName("table")[0];
+                    var tableBody = document.getElementsByTagName("tbody")[0];
                     var row = document.createElement("tr");
 
                     row.innerHTML = "<td>" + compound.Name + "</td>";
-                    row.innerHTML += '<td><a class="btn btn-primary" href="/Compound/Edit/' + compound.Id + '">Edit</a> | ' +
+                    row.innerHTML += '<td><a class="btn btn-primary" href="/Compound/Edit/' + compound.Id + '">Details</a> | ' +
                         '<button class="btn btn-default" onclick="deleteCompound(\'' + compound.Id + '\');">Delete</button></td>';
 
-                    table.append(row);
+                    tableBody.append(row);
                 })
             })
             .fail(function () {
@@ -55,10 +52,10 @@
             $.get("/Compound/Delete/" + id)
                 .done(function (success) {
                     if (success) {
-                        //Clear the table and pull data once again
-                        var table = document.getElementsByClassName("table")[0];
-                        while (table.hasChildNodes()) {
-                            table.removeChild(table.lastChild);
+                        //Clear the tableBody and pull data once again
+                        var tableBody = document.getElementsByTagName("tbody")[0];
+                        while (tableBody.hasChildNodes()) {
+                            tableBody.removeChild(tableBody.lastChild);
                         }
                         getCompounds();
                     }

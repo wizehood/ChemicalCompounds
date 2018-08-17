@@ -16,17 +16,20 @@ namespace Junior.Web
             {
                 config.CreateMap<Compound, CompoundDto>();
 
-                config.CreateMap<CompoundElement, ElementDto>()
+                config.CreateMap<Element, ElementDto>()
+                   .ForMember(dest => dest.BoilingTemperature, opt => opt.MapFrom(src => src.BoilingTemperatureK));
+
+                config.CreateMap<CompoundElement, ElementPartialDto>()
                     .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.ElementId))
                     .ForMember(dest => dest.CompoundElementId, opt => opt.MapFrom(src => src.Id))
                     .ForMember(dest => dest.Quantity, opt => opt.MapFrom(src => src.ElementQuantity));
 
-                config.CreateMap<ElementDto, CompoundElement>()
+                config.CreateMap<ElementPartialDto, CompoundElement>()
                     .ForMember(dest => dest.ElementId, opt => opt.MapFrom(src => src.Id))
                     .ForMember(dest => dest.ElementQuantity, opt => opt.MapFrom(src => src.Quantity))
                     .ForMember(dest => dest.Id, opt => opt.Ignore());
 
-                config.CreateMap<CompoundElementDto, Compound>();
+                config.CreateMap<CompoundElementPartialDto, Compound>();
             });
         }
     }
