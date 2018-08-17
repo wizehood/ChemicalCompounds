@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Junior.DataAccessLayer.Repositories;
 using Junior.SharedModels.DtoModels;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
@@ -20,6 +21,8 @@ namespace Junior.WebAPI.Controllers
         [HttpGet]
         public IHttpActionResult GetAll()
         {
+            Log.Information("GET Compound/GetAll triggered");
+
             var compounds = repo.GetAllCompounds();
             var compoundDtos= Mapper.Map<List<CompoundDto>>(compounds);
 
@@ -33,6 +36,8 @@ namespace Junior.WebAPI.Controllers
         [HttpGet]
         public IHttpActionResult GetByTypeId(Guid id)
         {
+            Log.Information("GET Compound/GetByTypeId triggered");
+
             var compounds = repo.GetAllCompoundsByTypeId(id);
             var compoundDtos = Mapper.Map<List<CompoundDto>>(compounds);
 
@@ -45,6 +50,8 @@ namespace Junior.WebAPI.Controllers
         [HttpGet]
         public IHttpActionResult GetTypes()
         {
+            Log.Information("GET Compound/GetTypes triggered");
+
             var types = repo.GetAllCompoundTypes();
 
             return Ok(types);

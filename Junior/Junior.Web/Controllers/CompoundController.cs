@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Junior.DataAccessLayer.Repositories;
 using Junior.SharedModels.DtoModels;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +15,15 @@ namespace Junior.Web.Controllers
 
         public ActionResult Index()
         {
+            Log.Information("GET Compound/Index triggered");
+
             return View();
         }
 
         public ActionResult GetAllCompounds()
         {
+            Log.Information("GET Compound/GetAllCompounds triggered");
+
             var compounds = repo.GetAllCompounds();
 
             //Map to DTO object
@@ -29,6 +34,8 @@ namespace Junior.Web.Controllers
 
         public ActionResult Create()
         {
+            Log.Information("GET Compound/Create triggered");
+
             PopulateCombos();
 
             return View();
@@ -39,6 +46,8 @@ namespace Junior.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CompoundElementDto compoundElement)
         {
+            Log.Information("POST Compound/Create triggered");
+
             ModelState.Clear();
 
             if (ModelState.IsValid)
@@ -59,6 +68,8 @@ namespace Junior.Web.Controllers
 
         public ActionResult Delete(Guid id)
         {
+            Log.Information("GET Compound/Delete triggered");
+
             bool isSuccess = repo.DeleteCompound(id);
 
             return Json(isSuccess, JsonRequestBehavior.AllowGet);
@@ -66,6 +77,8 @@ namespace Junior.Web.Controllers
 
         public ActionResult Edit(Guid id)
         {
+            Log.Information("GET Compound/Edit triggered");
+
             var compoundElements = repo.GetCompoundElementsByCompoundId(id);
             if (compoundElements.Count == 0)
             {
@@ -90,6 +103,8 @@ namespace Junior.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(CompoundElementDto compoundElement)
         {
+            Log.Information("POST Compound/Edit triggered");
+
             ModelState.Clear();
 
             if (ModelState.IsValid)

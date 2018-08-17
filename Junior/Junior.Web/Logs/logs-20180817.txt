@@ -1,0 +1,32 @@
+[17-08-2018 11:02:39] INF: Application started  
+[17-08-2018 11:02:39] INF: GET Compound/Index triggered  
+[17-08-2018 11:02:42] INF: GET Compound/Index triggered  
+[17-08-2018 11:02:43] INF: GET Compound/GetAllCompounds triggered  
+[17-08-2018 11:02:43] INF: GetAllCompounds triggered  
+[17-08-2018 11:02:45] INF: GET Compound/Edit triggered  
+[17-08-2018 11:02:45] INF: GetCompoundElementsByCompoundId triggered "4a28ce81-85a1-e811-b3b1-70f3959b760a"  
+[17-08-2018 11:02:45] INF: GetAllCompoundTypes triggered  
+[17-08-2018 11:02:45] INF: GetAllElements triggered  
+[17-08-2018 11:02:46] INF: POST Compound/Edit triggered  
+[17-08-2018 11:02:46] INF: UpdateCompoundElement triggered {"CompoundId":"4a28ce81-85a1-e811-b3b1-70f3959b760a","Name":"333","TypeId":"adbc2b92-6ba1-e811-b3b1-70f3959b760a","Elements":[{"Id":"b2bc2b92-6ba1-e811-b3b1-70f3959b760a","CompoundElementId":"4b28ce81-85a1-e811-b3b1-70f3959b760a","Quantity":33,"$type":"ElementDto"},{"Id":"b2bc2b92-6ba1-e811-b3b1-70f3959b760a","CompoundElementId":"4c28ce81-85a1-e811-b3b1-70f3959b760a","Quantity":333,"$type":"ElementDto"}],"$type":"CompoundElementDto"}  
+[17-08-2018 11:02:46] INF: GET Compound/Index triggered  
+[17-08-2018 11:02:46] INF: GET Compound/GetAllCompounds triggered  
+[17-08-2018 11:02:46] INF: GetAllCompounds triggered  
+[17-08-2018 11:04:42] INF: Application started  
+[17-08-2018 11:04:43] INF: GET Compound/Index triggered  
+[17-08-2018 11:04:45] INF: GET Compound/Index triggered  
+[17-08-2018 11:04:46] INF: GET Compound/GetAllCompounds triggered  
+[17-08-2018 11:04:46] INF: GetAllCompounds triggered  
+[17-08-2018 11:04:47] INF: GET Compound/Edit triggered  
+[17-08-2018 11:04:47] INF: GetCompoundElementsByCompoundId triggered "3810f66d-85a1-e811-b3b1-70f3959b760a"  
+[17-08-2018 11:04:47] INF: GetAllCompoundTypes triggered  
+[17-08-2018 11:04:47] INF: GetAllElements triggered  
+[17-08-2018 11:04:48] INF: POST Compound/Edit triggered  
+[17-08-2018 11:04:48] INF: UpdateCompoundElement triggered {"CompoundId":"3810f66d-85a1-e811-b3b1-70f3959b760a","Name":"23","TypeId":"adbc2b92-6ba1-e811-b3b1-70f3959b760a","Elements":[{"Id":"b1bc2b92-6ba1-e811-b3b1-70f3959b760a","CompoundElementId":"3910f66d-85a1-e811-b3b1-70f3959b760a","Quantity":55,"$type":"ElementDto"},{"Id":"b1bc2b92-6ba1-e811-b3b1-70f3959b760a","CompoundElementId":"3a10f66d-85a1-e811-b3b1-70f3959b760a","Quantity":55,"$type":"ElementDto"}],"$type":"CompoundElementDto"}  
+[17-08-2018 11:04:48] INF: GET Compound/Index triggered  
+[17-08-2018 11:04:48] INF: GET Compound/GetAllCompounds triggered  
+[17-08-2018 11:04:48] INF: GetAllCompounds triggered  
+[17-08-2018 11:13:34] INF: Application started  
+[17-08-2018 11:13:34] INF: GET Compound/Index triggered  
+[17-08-2018 11:15:29] INF: Application started  
+[17-08-2018 11:15:30] INF: GET Compound/Index triggered  

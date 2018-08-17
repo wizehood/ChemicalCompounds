@@ -1,4 +1,5 @@
 ﻿using Junior.DataAccessLayer.Context;
+using Serilog;
 using System.Web.Mvc;
 
 namespace Junior.Web.Controllers
@@ -7,6 +8,8 @@ namespace Junior.Web.Controllers
     {
         public ActionResult Index()
         {
+            Log.Information("GET Home/Index triggered");
+
             return View();
         }
     }

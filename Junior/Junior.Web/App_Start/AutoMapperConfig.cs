@@ -25,6 +25,8 @@ namespace Junior.Web
                     .ForMember(dest => dest.ElementId, opt => opt.MapFrom(src => src.Id))
                     .ForMember(dest => dest.ElementQuantity, opt => opt.MapFrom(src => src.Quantity))
                     .ForMember(dest => dest.Id, opt => opt.Ignore());
+
+                config.CreateMap<CompoundElementDto, Compound>();
             });
         }
     }

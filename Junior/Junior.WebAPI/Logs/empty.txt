@@ -1,0 +1,1 @@
+﻿this is folder where WebAPI logs go

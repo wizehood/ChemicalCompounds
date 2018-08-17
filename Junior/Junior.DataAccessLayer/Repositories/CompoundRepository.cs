@@ -2,6 +2,7 @@
 using Junior.DataAccessLayer.Context;
 using Junior.SharedModels.DomainModels;
 using Junior.SharedModels.DtoModels;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -13,6 +14,8 @@ namespace Junior.DataAccessLayer.Repositories
     {
         public List<Compound> GetAllCompounds()
         {
+            Log.Information("GetAllCompounds triggered");
+
             try
             {
                 using (var context = new DatabaseContext())
@@ -27,12 +30,15 @@ namespace Junior.DataAccessLayer.Repositories
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "GetAllCompounds");
                 return null;
             }
         }
 
         public List<Compound> GetAllCompoundsByTypeId(Guid typeId)
         {
+            Log.Information("GetAllCompoundsByTypeId triggered {typeId}", typeId);
+
             try
             {
                 using (var context = new DatabaseContext())
@@ -48,12 +54,15 @@ namespace Junior.DataAccessLayer.Repositories
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "GetAllCompoundsByTypeId");
                 return null;
             }
         }
 
         public List<CompoundType> GetAllCompoundTypes()
         {
+            Log.Information("GetAllCompoundTypes triggered");
+
             try
             {
                 using (var context = new DatabaseContext())
@@ -67,12 +76,15 @@ namespace Junior.DataAccessLayer.Repositories
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "GetAllCompoundTypes");
                 return null;
             }
         }
 
         public List<Element> GetAllElements()
         {
+            Log.Information("GetAllElements triggered");
+
             try
             {
                 using (var context = new DatabaseContext())
@@ -86,12 +98,15 @@ namespace Junior.DataAccessLayer.Repositories
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "GetAllElements");
                 return null;
             }
         }
 
         public List<CompoundElement> GetCompoundElements()
         {
+            Log.Information("GetCompoundElements triggered");
+
             try
             {
                 using (var context = new DatabaseContext())
@@ -107,12 +122,15 @@ namespace Junior.DataAccessLayer.Repositories
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "GetCompoundElements");
                 return null;
             }
         }
 
         public List<CompoundElement> GetCompoundElementsByCompoundId(Guid id)
         {
+            Log.Information("GetCompoundElementsByCompoundId triggered {id}", id);
+
             try
             {
                 using (var context = new DatabaseContext())
@@ -127,12 +145,15 @@ namespace Junior.DataAccessLayer.Repositories
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "GetCompoundElementsByCompoundId");
                 return null;
             }
         }
 
         public Guid CreateCompound(Compound entity)
         {
+            Log.Information("CreateCompound triggered {@entity}", entity);
+            
             try
             {
                 using (var context = new DatabaseContext())
@@ -145,12 +166,15 @@ namespace Junior.DataAccessLayer.Repositories
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "CreateCompound");
                 return Guid.Empty;
             }
         }
 
         public bool CreateCompoundElement(CompoundElementDto entity)
         {
+            Log.Information("CreateCompoundElement triggered {@entity}", entity);
+
             try
             {
                 using (var context = new DatabaseContext())
@@ -181,12 +205,15 @@ namespace Junior.DataAccessLayer.Repositories
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "CreateCompoundElement");
                 return false;
             }
         }
 
         public bool UpdateCompoundElement(CompoundElementDto entity)
         {
+            Log.Information("UpdateCompoundElement triggered {@entity}", entity);
+
             try
             {
                 using (var context = new DatabaseContext())
@@ -211,12 +238,15 @@ namespace Junior.DataAccessLayer.Repositories
             }
             catch (Exception ex)
             {
+                Log.Error(ex, "UpdateCompoundElement");
                 return false;
             }
         }
 
         public bool DeleteCompound(Guid id)
         {
+            Log.Information("DeleteCompound triggered {id}", id);
+
             try
             {
                 using (var context = new DatabaseContext())
@@ -230,6 +260,7 @@ namespace Junior.DataAccessLayer.Repositories
             }
             catch(Exception ex)
             {
+                Log.Error(ex, "DeleteCompound");
                 return false;
             }
         }
