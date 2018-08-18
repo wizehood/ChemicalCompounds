@@ -41,6 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainModels\Interfaces\ICompound.cs" />
+    <Compile Include="DomainModels\Interfaces\ICompoundElement.cs" />
+    <Compile Include="DomainModels\Interfaces\ICompoundType.cs" />
+    <Compile Include="DomainModels\Interfaces\IElement.cs" />
     <Compile Include="DtoModels\CompoundDto.cs" />
     <Compile Include="DtoModels\CompoundElementPartialDto.cs" />
     <Compile Include="DtoModels\ElementDto.cs" />
@@ -53,6 +57,8 @@
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DtoModels\Interfaces\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

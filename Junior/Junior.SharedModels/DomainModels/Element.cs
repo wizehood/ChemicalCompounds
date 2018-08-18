@@ -1,13 +1,18 @@
-﻿using System;
+﻿using Junior.SharedModels.DomainModels.Interfaces;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Junior.SharedModels.DomainModels
 {
-    public class Element
+    public class Element : IElement
     {
+        public Element()
+        {
+            Id = Guid.NewGuid();
+        }
+
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
         [Required]

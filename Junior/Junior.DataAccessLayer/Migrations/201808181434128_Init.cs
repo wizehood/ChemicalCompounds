@@ -11,7 +11,7 @@ namespace Junior.DataAccessLayer.Migrations
                 "dbo.CompoundElements",
                 c => new
                     {
-                        Id = c.Guid(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false),
                         CompoundId = c.Guid(nullable: false),
                         ElementId = c.Guid(nullable: false),
                         ElementQuantity = c.Int(nullable: false),
@@ -26,7 +26,7 @@ namespace Junior.DataAccessLayer.Migrations
                 "dbo.Compounds",
                 c => new
                     {
-                        Id = c.Guid(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false),
                         Name = c.String(nullable: false),
                         TypeId = c.Guid(nullable: false),
                         Deleted = c.Boolean(nullable: false),
@@ -39,7 +39,7 @@ namespace Junior.DataAccessLayer.Migrations
                 "dbo.CompoundTypes",
                 c => new
                     {
-                        Id = c.Guid(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false),
                         Name = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
@@ -48,8 +48,9 @@ namespace Junior.DataAccessLayer.Migrations
                 "dbo.Elements",
                 c => new
                     {
-                        Id = c.Guid(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false),
                         Name = c.String(nullable: false),
+                        BoilingTemperatureK = c.Double(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             

@@ -3,13 +3,17 @@ using Junior.SharedModels.DtoModels;
 using Junior.Web;
 using Junior.Web.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace Junior.Tests
 {
     [TestClass]
-    public class CompoundControllerTests
+    public class WebTests
     {
         [ClassInitialize]
         public static void ClassInitializer(TestContext context)
@@ -26,7 +30,7 @@ namespace Junior.Tests
 
             //Act
             var result = controller.Index() as ViewResult;
-            
+
             //Assert
             Assert.AreEqual("Index", result.ViewName);
         }
@@ -36,9 +40,14 @@ namespace Junior.Tests
         {
             //Arrange 
             var controller = new CompoundController();
-            var compoundId = new Guid("E2095EF6-4EA2-E811-B3B1-70F3959B760A");
 
             //Act
+            var compoundJson = controller.GetAll() as JsonResult;
+            var serializer = new JavaScriptSerializer();
+
+            var compounds = serializer.Deserialize<List<CompoundDto>>(serializer.Serialize(compoundJson.Data));
+            var compoundId = compounds.First().Id;
+
             var result = controller.Edit(compoundId) as ViewResult;
             var model = (CompoundElementPartialDto)result.Model;
 

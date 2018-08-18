@@ -1,13 +1,18 @@
-﻿using System;
+﻿using Junior.SharedModels.DomainModels.Interfaces;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Junior.SharedModels.DomainModels
 {
-    public class CompoundType
+    public class CompoundType : ICompoundType
     {
+        public CompoundType()
+        {
+            Id = Guid.NewGuid();
+        }
+
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
         [Required]

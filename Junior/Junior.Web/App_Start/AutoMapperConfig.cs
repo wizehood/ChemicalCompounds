@@ -25,9 +25,9 @@ namespace Junior.Web
                     .ForMember(dest => dest.Quantity, opt => opt.MapFrom(src => src.ElementQuantity));
 
                 config.CreateMap<ElementPartialDto, CompoundElement>()
+                    .ForMember(dest => dest.Id, opt => opt.Ignore())
                     .ForMember(dest => dest.ElementId, opt => opt.MapFrom(src => src.Id))
-                    .ForMember(dest => dest.ElementQuantity, opt => opt.MapFrom(src => src.Quantity))
-                    .ForMember(dest => dest.Id, opt => opt.Ignore());
+                    .ForMember(dest => dest.ElementQuantity, opt => opt.MapFrom(src => src.Quantity));
 
                 config.CreateMap<CompoundElementPartialDto, Compound>();
             });

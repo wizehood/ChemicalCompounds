@@ -151,7 +151,7 @@ namespace Junior.DataAccessLayer.Repositories
             }
         }
 
-        public Guid CreateCompound(Compound entity)
+        public bool CreateCompound(Compound entity)
         {
             Log.Information("CreateCompound triggered {@entity}", entity);
 
@@ -162,13 +162,13 @@ namespace Junior.DataAccessLayer.Repositories
                     context.Compounds.Add(entity);
                     context.SaveChanges();
 
-                    return entity.Id;
+                    return true;
                 }
             }
             catch (Exception ex)
             {
                 Log.Error(ex, "CreateCompound");
-                return Guid.Empty;
+                return false;
             }
         }
 
@@ -183,9 +183,8 @@ namespace Junior.DataAccessLayer.Repositories
                     //First map to Compound object and save to Compounds table
                     var compound = Mapper.Map<Compound>(entity);
 
-                    //Get resulting id
-                    var compoundId = CreateCompound(compound);
-                    if (compoundId.Equals(Guid.Empty))
+                    bool created = CreateCompound(compound);
+                    if (!created)
                     {
                         return false;
                     }
@@ -194,7 +193,7 @@ namespace Junior.DataAccessLayer.Repositories
                     foreach (var element in entity.Elements)
                     {
                         var compoundElement = Mapper.Map<CompoundElement>(element);
-                        compoundElement.CompoundId = compoundId;
+                        compoundElement.CompoundId = compound.Id;
 
                         context.CompoundElements.Add(compoundElement);
                     }

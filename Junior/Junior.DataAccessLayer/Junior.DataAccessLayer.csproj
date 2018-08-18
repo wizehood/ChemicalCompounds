@@ -35,6 +35,9 @@
     <Reference Include="AutoMapper, Version=7.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.7.0.1\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="Bogus, Version=23.0.2.0, Culture=neutral, PublicKeyToken=fa1bb3f3f218129a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bogus.23.0.2\lib\net40\Bogus.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -80,13 +83,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\DatabaseContext.cs" />
-    <Compile Include="Migrations\201808161542360_Init.cs" />
-    <Compile Include="Migrations\201808161542360_Init.Designer.cs">
-      <DependentUpon>201808161542360_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808170940268_AddedBoilingTemperature.cs" />
-    <Compile Include="Migrations\201808170940268_AddedBoilingTemperature.Designer.cs">
-      <DependentUpon>201808170940268_AddedBoilingTemperature.cs</DependentUpon>
+    <Compile Include="Migrations\201808181434128_Init.cs" />
+    <Compile Include="Migrations\201808181434128_Init.Designer.cs">
+      <DependentUpon>201808181434128_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,11 +106,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808161542360_Init.resx">
-      <DependentUpon>201808161542360_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808170940268_AddedBoilingTemperature.resx">
-      <DependentUpon>201808170940268_AddedBoilingTemperature.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808181434128_Init.resx">
+      <DependentUpon>201808181434128_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
