@@ -14,25 +14,17 @@ namespace Junior.SharedModels.Utilities
         {
             try
             {
-                //Flatten compound elements and groupsum their temperatures
-                var elementTemperatures = compoundElements.GroupBy(d => d.Element.Id)
-                    .Select(g => new
-                    {
-                        Key = g.Key,
-                        Value = g.Sum(s => s.Element.BoilingTemperatureK * s.ElementQuantity)
-                    });
-
-                int distinctElementCount = elementTemperatures.Count();
-
                 //Calculate the product
                 double temperatureProduct = 1d;
-                foreach (var temperature in elementTemperatures)
+                int elementCount = 0;
+                foreach (var compoundElement in compoundElements)
                 {
-                    temperatureProduct *= temperature.Value;
+                    temperatureProduct *= Math.Pow(compoundElement.Element.BoilingTemperatureK, compoundElement.ElementQuantity);
+                    elementCount += compoundElement.ElementQuantity;
                 }
 
-                //N-th sqrt is actually a number to the power of (1/N)
-                double boilingTemperature = Math.Round(Math.Pow(temperatureProduct, 1.0 / distinctElementCount), 3);
+                //N-th root is actually a number to the power of (1/N)
+                double boilingTemperature = Math.Round(Math.Pow(temperatureProduct, 1.0 / elementCount), 3);
 
                 //Convert temperature if needed
                 if (temperatureType != TemperatureType.Kelvin)
@@ -53,59 +45,49 @@ namespace Junior.SharedModels.Utilities
         {
             try
             {
-                //Flatten compound elements and groupsum their temperatures
-                var elementTemperatures = compoundElements.GroupBy(d => new { d.Element.Id, d.CompoundId })
-                    .Select(g => new
-                    {
-                        Key = g.Key.CompoundId,
-                        Value = g.Sum(s => s.Element.BoilingTemperatureK * s.ElementQuantity)
-                    });
-
-                var compoundIds = elementTemperatures.Select(x => x.Key)
+                var compoundIds = compoundElements.Select(x => x.CompoundId)
                     .Distinct()
                     .ToList();
 
-                var compoundTemperatures = new Dictionary<Guid, double>();
-
-                //For each id get number of distinct elements in list
-                //Then get the temperatures
+                //For each id get distinct elements in list
+                //Then calculate the temperature product
                 //Finally, calculate boiling temperature
+                var boilingTemperatures = new Dictionary<Guid, double>();
                 foreach (var id in compoundIds)
                 {
-                    var elementCount = elementTemperatures.Where(ce => ce.Key == id)
-                        .Count();
+                    double temperatureProduct = 1d;
+                    int elementCount = 0;
 
-                    var distinctElementTemperatures = elementTemperatures.Where(t => t.Key == id)
-                        .Select(t => t.Value)
+                    var distinctCompoundElements = compoundElements.Where(ce => ce.CompoundId == id)
                         .ToList();
 
-                    double temperatureProduct = 1d;
-                    foreach (var temperature in distinctElementTemperatures)
+                    foreach (var compoundElement in distinctCompoundElements)
                     {
-                        temperatureProduct *= temperature;
+                        temperatureProduct *= Math.Pow(compoundElement.Element.BoilingTemperatureK, compoundElement.ElementQuantity);
+                        elementCount += compoundElement.ElementQuantity;
                     }
 
                     double boilingTemperature = Math.Round(Math.Pow(temperatureProduct, 1.0 / elementCount), 3);
 
-                    compoundTemperatures.Add(id, boilingTemperature);
+                    boilingTemperatures.Add(id, boilingTemperature);
                 }
 
                 //Calculate temperature differences 
                 var temperatureDifferences = new List<TemperatureDifferenceDto>();
-                for (int i = 0; i < compoundTemperatures.Count; i++)
+                for (int i = 0; i < boilingTemperatures.Count; i++)
                 {
-                    for (int j = i; j < compoundTemperatures.Count - 1; j++)
+                    for (int j = i; j < boilingTemperatures.Count - 1; j++)
                     {
                         temperatureDifferences.Add(new TemperatureDifferenceDto()
                         {
-                            CompoundAId = compoundTemperatures.ElementAt(i).Key,
-                            CompoundBId = compoundTemperatures.ElementAt(j + 1).Key,
-                            Value = Math.Round((Math.Abs(compoundTemperatures.ElementAt(i).Value - compoundTemperatures.ElementAt(j + 1).Value)), 3)
+                            CompoundAId = boilingTemperatures.ElementAt(i).Key,
+                            CompoundBId = boilingTemperatures.ElementAt(j + 1).Key,
+                            Value = Math.Round((Math.Abs(boilingTemperatures.ElementAt(i).Value - boilingTemperatures.ElementAt(j + 1).Value)), 3)
                         });
                     }
                 }
 
-                var minDifference = temperatureDifferences.OrderBy(d=>d.Value)
+                var minDifference = temperatureDifferences.OrderBy(d => d.Value)
                     .First();
 
                 return minDifference;
