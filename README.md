@@ -1,5 +1,5 @@
-# ChemicalCompounds
-.NET app for managing chemical compounds and features. Projects are built upon .NET Framework 4.7.2 with Web supported by OWIN configuration. Rest of buzzwords: Serilog, MS Unit testing, Automapper, Swagger, Bogus
+# Chemical Compounds
+.NET app for managing chemical compounds and features. Projects are built upon .NET Framework 4.7.2 with Web supported by OWIN configuration. Rest of buzzwords: Serilog, Swagger, Automapper, Bogus
 
 ## Tasks:
 
