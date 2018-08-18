@@ -1,7 +1,7 @@
 ﻿using System;
 using static Junior.SharedModels.Enums.Enums;
 
-namespace Junior.Web.Utility
+namespace Junior.SharedModels.Utilities
 {
     public static class TemperatureConverter
     {

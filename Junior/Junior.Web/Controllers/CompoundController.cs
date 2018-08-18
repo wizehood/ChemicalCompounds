@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Junior.DataAccessLayer.Repositories;
 using Junior.SharedModels.DtoModels;
-using Junior.Web.Utility;
+using Junior.SharedModels.Utilities;
 using Serilog;
 using System;
 using System.Collections.Generic;

@@ -29,25 +29,30 @@ namespace Junior.DataAccessLayer.Migrations
             }
             context.SaveChanges();
 
-            //Seed fake 20 compounds
+            //Initial setup
+            int maxCompoundCount = 20;
+            int maxElementCount = 5;
+            int maxElementQuantity = 12;
+
+            //Seed fake compounds
             var compoundMock = new Faker<Compound>()
                 .StrictMode(false)
                 .RuleFor(u => u.Name, f => string.Join(" ", f.Lorem.Words(2)))
                 .RuleFor(u => u.TypeId, f => f.PickRandom<Guid>(context.CompoundTypes.Select(t => t.Id)));
 
-            var compounds = compoundMock.Generate(20);
+            var compounds = compoundMock.Generate(maxCompoundCount);
             var compoundElements = new List<CompoundElement>();
 
             //Seed fake compound elements
             foreach (var compound in compounds)
             {
-                var elementCount = new Faker().Random.Number(1, 5);
+                var elementCount = new Faker().Random.Number(1, maxElementCount);
 
                 var compoundElementMock = new Faker<CompoundElement>()
                    .StrictMode(false)
                    .RuleFor(u => u.ElementId, f => f.PickRandom<Guid>(context.Elements.Select(t => t.Id)))
                    .RuleFor(u => u.CompoundId, f => compound.Id)
-                   .RuleFor(u => u.ElementQuantity, f => f.Random.Number(1, 5));
+                   .RuleFor(u => u.ElementQuantity, f => f.Random.Number(1, maxElementQuantity));
 
                 for (int i = 0; i < elementCount; i++)
                 {

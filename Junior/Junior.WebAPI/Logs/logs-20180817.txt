@@ -1,1 +1,0 @@
-[17-08-2018 20:53:42] INF: Application started  

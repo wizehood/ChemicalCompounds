@@ -35,6 +35,28 @@ namespace Junior.DataAccessLayer.Repositories
             }
         }
 
+        public Compound GetCompoundById(Guid id)
+        {
+            Log.Information("GetCompoundById triggered {id}", id);
+
+            try
+            {
+                using (var context = new DatabaseContext())
+                {
+                    var entity = context.Compounds
+                        .Where(c => c.Id == id)
+                        .SingleOrDefault();
+
+                    return entity;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "GetCompoundById");
+                return null;
+            }
+        }
+
         public List<Compound> GetAllCompoundsByTypeId(Guid typeId)
         {
             Log.Information("GetAllCompoundsByTypeId triggered {typeId}", typeId);
