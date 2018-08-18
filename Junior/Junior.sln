@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Junior.DataAccessLayer", "J
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Junior.WebAPI", "Junior.WebAPI\Junior.WebAPI.csproj", "{F25C0ED5-7353-4374-B0E1-29B20BB1E8F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Junior.Tests", "Junior.Tests\Junior.Tests.csproj", "{2D5C51B3-EDDA-43A5-B5E8-A370BF929585}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{F25C0ED5-7353-4374-B0E1-29B20BB1E8F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F25C0ED5-7353-4374-B0E1-29B20BB1E8F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F25C0ED5-7353-4374-B0E1-29B20BB1E8F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D5C51B3-EDDA-43A5-B5E8-A370BF929585}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D5C51B3-EDDA-43A5-B5E8-A370BF929585}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D5C51B3-EDDA-43A5-B5E8-A370BF929585}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D5C51B3-EDDA-43A5-B5E8-A370BF929585}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

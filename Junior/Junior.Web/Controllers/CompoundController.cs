@@ -28,7 +28,7 @@ namespace Junior.Web.Controllers
         {
             Log.Information("GET Compound/Index triggered");
 
-            return View();
+            return View("Index");
         }
 
         public ActionResult GetAll()
