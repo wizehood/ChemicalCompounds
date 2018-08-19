@@ -30,7 +30,7 @@ namespace ChemicalCompounds.DataAccessLayer.Migrations
             context.SaveChanges();
 
             //Initial setup
-            int maxCompoundCount = 20;
+            int compoundCount = 20;
             int maxElementCount = 5;
             int maxElementQuantity = 12;
 
@@ -40,13 +40,13 @@ namespace ChemicalCompounds.DataAccessLayer.Migrations
                 .RuleFor(u => u.Name, f => string.Join(" ", f.Lorem.Words(2)))
                 .RuleFor(u => u.TypeId, f => f.PickRandom<Guid>(context.CompoundTypes.Select(t => t.Id)));
 
-            var compounds = compoundMock.Generate(maxCompoundCount);
+            var compounds = compoundMock.Generate(compoundCount);
             var compoundElements = new List<CompoundElement>();
 
             //Seed fake compound elements
             foreach (var compound in compounds)
             {
-                var elementCount = new Faker().Random.Number(1, maxElementCount);
+                var elementCount = new Faker().Random.Number(2, maxElementCount);
 
                 var compoundElementMock = new Faker<CompoundElement>()
                    .StrictMode(false)
