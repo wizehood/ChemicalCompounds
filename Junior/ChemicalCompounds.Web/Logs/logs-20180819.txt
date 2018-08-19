@@ -1,0 +1,70 @@
+[19-08-2018 11:23:40] INF: Application started  
+[19-08-2018 11:23:40] INF: GET Home/Index triggered  
+[19-08-2018 11:24:44] INF: Application started  
+[19-08-2018 11:24:44] INF: GET Home/Index triggered  
+[19-08-2018 11:24:47] INF: GET Compound/Index triggered  
+[19-08-2018 11:24:49] INF: GET Compound/GetAll triggered  
+[19-08-2018 11:24:49] INF: GetAllCompounds triggered  
+[19-08-2018 11:24:51] INF: GET Element/Index triggered  
+[19-08-2018 11:24:53] INF: GET Element/GetAll triggered  
+[19-08-2018 11:24:53] INF: GetAllElements triggered  
+[19-08-2018 11:25:21] INF: Application started  
+[19-08-2018 11:25:21] INF: GET Home/Index triggered  
+[19-08-2018 11:25:24] INF: GET Compound/Index triggered  
+[19-08-2018 11:25:24] INF: GET Compound/GetAll triggered  
+[19-08-2018 11:25:24] INF: GetAllCompounds triggered  
+[19-08-2018 11:25:26] INF: GET Compound/Edit triggered  
+[19-08-2018 11:25:26] INF: GetCompoundElementsByCompoundId triggered "7f8902a5-bc99-44df-9bf6-26206ec39b3d"  
+[19-08-2018 11:25:26] INF: GetAllCompoundTypes triggered  
+[19-08-2018 11:25:26] INF: GetAllElements triggered  
+[19-08-2018 11:25:26] INF: GET Compound/GetBoilingTemperature triggered  
+[19-08-2018 11:25:26] INF: GetCompoundElementsByCompoundId triggered "7f8902a5-bc99-44df-9bf6-26206ec39b3d"  
+[19-08-2018 11:25:28] INF: POST Compound/Edit triggered  
+[19-08-2018 11:25:28] INF: UpdateCompoundElement triggered {"CompoundId":"7f8902a5-bc99-44df-9bf6-26206ec39b3d","Name":"dicta libero","TypeId":"97062559-2eca-49e5-8cd8-beb84ee3f745","BoilingTemperature":0,"Elements":[{"Id":"6577129b-9b46-4168-9c8a-47f4f25ecbbb","CompoundElementId":"6a1efc0a-6794-470f-92f8-064a6cebd2a5","Quantity":11,"$type":"ElementPartialDto"},{"Id":"170b2175-4381-4b46-b6ac-b7ca2d3da1f0","CompoundElementId":"be26df6f-0d04-4219-bbd0-07c4e863994c","Quantity":1,"$type":"ElementPartialDto"},{"Id":"8311135e-f801-49b5-9603-68fd8cc7e362","CompoundElementId":"8cd1e7a8-9593-4934-b520-dc8276445c8c","Quantity":12,"$type":"ElementPartialDto"},{"Id":"6577129b-9b46-4168-9c8a-47f4f25ecbbb","CompoundElementId":"e1b94adc-d5d2-4571-a675-e8a8a467c663","Quantity":10,"$type":"ElementPartialDto"}],"$type":"CompoundElementPartialDto"}  
+[19-08-2018 11:25:28] INF: GET Compound/Index triggered  
+[19-08-2018 11:25:28] INF: GET Compound/GetAll triggered  
+[19-08-2018 11:25:28] INF: GetAllCompounds triggered  
+[19-08-2018 11:25:29] INF: GET Compound/Edit triggered  
+[19-08-2018 11:25:29] INF: GetCompoundElementsByCompoundId triggered "35bd51b0-a250-44f4-a1f4-278ac4bbb6b1"  
+[19-08-2018 11:25:29] INF: GetAllCompoundTypes triggered  
+[19-08-2018 11:25:29] INF: GetAllElements triggered  
+[19-08-2018 11:25:29] INF: GET Compound/GetBoilingTemperature triggered  
+[19-08-2018 11:25:29] INF: GetCompoundElementsByCompoundId triggered "35bd51b0-a250-44f4-a1f4-278ac4bbb6b1"  
+[19-08-2018 11:25:31] INF: POST Compound/Edit triggered  
+[19-08-2018 11:25:31] INF: UpdateCompoundElement triggered {"CompoundId":"35bd51b0-a250-44f4-a1f4-278ac4bbb6b1","Name":"culpa assumenda","TypeId":"8f2f6fc2-07a8-4861-935d-51e5329b3c53","BoilingTemperature":0,"Elements":[{"Id":"0b295cd3-284b-4786-85d6-67663c068f87","CompoundElementId":"86888d92-3914-4aed-aa74-145dbd75ef3a","Quantity":3,"$type":"ElementPartialDto"},{"Id":"6577129b-9b46-4168-9c8a-47f4f25ecbbb","CompoundElementId":"fd0f0c15-ca61-48d8-a839-284855c702a8","Quantity":4,"$type":"ElementPartialDto"},{"Id":"0b295cd3-284b-4786-85d6-67663c068f87","CompoundElementId":"fb0607f5-3d7c-4030-b7c7-949afa6f7a37","Quantity":6,"$type":"ElementPartialDto"},{"Id":"0b295cd3-284b-4786-85d6-67663c068f87","CompoundElementId":"9c5e0ed5-3bf1-4e9b-8f1c-ad9b201f7a9b","Quantity":9,"$type":"ElementPartialDto"},{"Id":"0b295cd3-284b-4786-85d6-67663c068f87","CompoundElementId":"d04f835d-ffde-4365-9265-f5f1a3747d19","Quantity":2,"$type":"ElementPartialDto"}],"$type":"CompoundElementPartialDto"}  
+[19-08-2018 11:25:31] INF: GET Compound/Index triggered  
+[19-08-2018 11:25:31] INF: GET Compound/GetAll triggered  
+[19-08-2018 11:25:31] INF: GetAllCompounds triggered  
+[19-08-2018 11:25:33] INF: GET Compound/Edit triggered  
+[19-08-2018 11:25:33] INF: GetCompoundElementsByCompoundId triggered "35bd51b0-a250-44f4-a1f4-278ac4bbb6b1"  
+[19-08-2018 11:25:33] INF: GetAllCompoundTypes triggered  
+[19-08-2018 11:25:33] INF: GetAllElements triggered  
+[19-08-2018 11:25:33] INF: GET Compound/GetBoilingTemperature triggered  
+[19-08-2018 11:25:33] INF: GetCompoundElementsByCompoundId triggered "35bd51b0-a250-44f4-a1f4-278ac4bbb6b1"  
+[19-08-2018 11:25:35] INF: POST Compound/Edit triggered  
+[19-08-2018 11:25:35] INF: UpdateCompoundElement triggered {"CompoundId":"35bd51b0-a250-44f4-a1f4-278ac4bbb6b1","Name":"culpa assumenda","TypeId":"01a39da8-64f3-483d-8ac6-b595e09605b9","BoilingTemperature":0,"Elements":[{"Id":"0b295cd3-284b-4786-85d6-67663c068f87","CompoundElementId":"86888d92-3914-4aed-aa74-145dbd75ef3a","Quantity":3,"$type":"ElementPartialDto"},{"Id":"6577129b-9b46-4168-9c8a-47f4f25ecbbb","CompoundElementId":"fd0f0c15-ca61-48d8-a839-284855c702a8","Quantity":4,"$type":"ElementPartialDto"},{"Id":"0b295cd3-284b-4786-85d6-67663c068f87","CompoundElementId":"fb0607f5-3d7c-4030-b7c7-949afa6f7a37","Quantity":6,"$type":"ElementPartialDto"},{"Id":"0b295cd3-284b-4786-85d6-67663c068f87","CompoundElementId":"9c5e0ed5-3bf1-4e9b-8f1c-ad9b201f7a9b","Quantity":9,"$type":"ElementPartialDto"},{"Id":"0b295cd3-284b-4786-85d6-67663c068f87","CompoundElementId":"d04f835d-ffde-4365-9265-f5f1a3747d19","Quantity":2,"$type":"ElementPartialDto"}],"$type":"CompoundElementPartialDto"}  
+[19-08-2018 11:25:35] INF: GET Compound/Index triggered  
+[19-08-2018 11:25:35] INF: GET Compound/GetAll triggered  
+[19-08-2018 11:25:35] INF: GetAllCompounds triggered  
+[19-08-2018 11:25:37] INF: GET Compound/Edit triggered  
+[19-08-2018 11:25:37] INF: GetCompoundElementsByCompoundId triggered "35bd51b0-a250-44f4-a1f4-278ac4bbb6b1"  
+[19-08-2018 11:25:37] INF: GetAllCompoundTypes triggered  
+[19-08-2018 11:25:37] INF: GetAllElements triggered  
+[19-08-2018 11:25:37] INF: GET Compound/GetBoilingTemperature triggered  
+[19-08-2018 11:25:37] INF: GetCompoundElementsByCompoundId triggered "35bd51b0-a250-44f4-a1f4-278ac4bbb6b1"  
+[19-08-2018 11:25:41] INF: POST Compound/Edit triggered  
+[19-08-2018 11:25:41] INF: UpdateCompoundElement triggered {"CompoundId":"35bd51b0-a250-44f4-a1f4-278ac4bbb6b1","Name":"culpa assumenda","TypeId":"01a39da8-64f3-483d-8ac6-b595e09605b9","BoilingTemperature":0,"Elements":[{"Id":"0b295cd3-284b-4786-85d6-67663c068f87","CompoundElementId":"86888d92-3914-4aed-aa74-145dbd75ef3a","Quantity":3,"$type":"ElementPartialDto"},{"Id":"6577129b-9b46-4168-9c8a-47f4f25ecbbb","CompoundElementId":"fd0f0c15-ca61-48d8-a839-284855c702a8","Quantity":4,"$type":"ElementPartialDto"},{"Id":"0b295cd3-284b-4786-85d6-67663c068f87","CompoundElementId":"fb0607f5-3d7c-4030-b7c7-949afa6f7a37","Quantity":6,"$type":"ElementPartialDto"},{"Id":"0b295cd3-284b-4786-85d6-67663c068f87","CompoundElementId":"9c5e0ed5-3bf1-4e9b-8f1c-ad9b201f7a9b","Quantity":9,"$type":"ElementPartialDto"},{"Id":"6577129b-9b46-4168-9c8a-47f4f25ecbbb","CompoundElementId":"d04f835d-ffde-4365-9265-f5f1a3747d19","Quantity":2,"$type":"ElementPartialDto"}],"$type":"CompoundElementPartialDto"}  
+[19-08-2018 11:25:41] INF: GET Compound/Index triggered  
+[19-08-2018 11:25:41] INF: GET Compound/GetAll triggered  
+[19-08-2018 11:25:41] INF: GetAllCompounds triggered  
+[19-08-2018 11:25:42] INF: GET Compound/Edit triggered  
+[19-08-2018 11:25:42] INF: GetCompoundElementsByCompoundId triggered "35bd51b0-a250-44f4-a1f4-278ac4bbb6b1"  
+[19-08-2018 11:25:42] INF: GetAllCompoundTypes triggered  
+[19-08-2018 11:25:42] INF: GetAllElements triggered  
+[19-08-2018 11:25:42] INF: GET Compound/GetBoilingTemperature triggered  
+[19-08-2018 11:25:42] INF: GetCompoundElementsByCompoundId triggered "35bd51b0-a250-44f4-a1f4-278ac4bbb6b1"  
+[19-08-2018 11:25:45] INF: POST Compound/Edit triggered  
+[19-08-2018 11:25:45] INF: UpdateCompoundElement triggered {"CompoundId":"35bd51b0-a250-44f4-a1f4-278ac4bbb6b1","Name":"culpa assumendacsacsca","TypeId":"01a39da8-64f3-483d-8ac6-b595e09605b9","BoilingTemperature":0,"Elements":[{"Id":"0b295cd3-284b-4786-85d6-67663c068f87","CompoundElementId":"86888d92-3914-4aed-aa74-145dbd75ef3a","Quantity":3,"$type":"ElementPartialDto"},{"Id":"6577129b-9b46-4168-9c8a-47f4f25ecbbb","CompoundElementId":"fd0f0c15-ca61-48d8-a839-284855c702a8","Quantity":4,"$type":"ElementPartialDto"},{"Id":"0b295cd3-284b-4786-85d6-67663c068f87","CompoundElementId":"fb0607f5-3d7c-4030-b7c7-949afa6f7a37","Quantity":6,"$type":"ElementPartialDto"},{"Id":"0b295cd3-284b-4786-85d6-67663c068f87","CompoundElementId":"9c5e0ed5-3bf1-4e9b-8f1c-ad9b201f7a9b","Quantity":9,"$type":"ElementPartialDto"},{"Id":"6577129b-9b46-4168-9c8a-47f4f25ecbbb","CompoundElementId":"d04f835d-ffde-4365-9265-f5f1a3747d19","Quantity":2,"$type":"ElementPartialDto"}],"$type":"CompoundElementPartialDto"}  
+[19-08-2018 11:25:45] INF: GET Compound/Index triggered  
+[19-08-2018 11:25:45] INF: GET Compound/GetAll triggered  
+[19-08-2018 11:25:45] INF: GetAllCompounds triggered  

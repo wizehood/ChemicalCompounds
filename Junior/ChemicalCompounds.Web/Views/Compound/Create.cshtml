@@ -1,0 +1,81 @@
+﻿@model ChemicalCompounds.SharedModels.DtoModels.CompoundElementPartialDto
+
+@{
+    ViewBag.Title = "Create compound";
+}
+
+<h2>Create compound</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TypeId, "Type", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.TypeId, new SelectList(ViewBag.Types, "Id", "Name"), htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        @for (int i = 0; i < 2; i++)
+        {
+            <div class="form-group chemical-element">
+                @Html.LabelFor(model => model.Elements[i].Quantity, "Element quantity", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.Elements[i].Quantity, htmlAttributes: new { @Value = 1, @type = "number", @min = "1", @class = "form-control", style = "width:5em" })
+                </div>
+                <div class="col-md-2">
+                    @Html.DropDownListFor(model => model.Elements[i].Id, new SelectList(ViewBag.ElementNames, "Id", "Name"), htmlAttributes: new { @class = "form-control" })
+                </div>
+            </div>
+        }
+
+        <br />
+        <br />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" /> |
+                <button onclick="addElement(); return false;" class="btn btn-default">Add element</button>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    var addElement = function () {
+        //Clone element 
+        var elements = document.getElementsByClassName("chemical-element");
+        var form = document.getElementsByClassName("form-horizontal")[0];
+        var clone = elements[0].cloneNode(true);
+
+        //Replace indices
+        var inputElement = clone.getElementsByTagName("input")[0];
+        inputElement.id = inputElement.id.replace(0, elements.length);
+        inputElement.name = inputElement.name.replace(0, elements.length);
+        var selectElement = clone.getElementsByTagName("select")[0];
+        selectElement.id = selectElement.id.replace(0, elements.length);
+        selectElement.name = selectElement.name.replace(0, elements.length);
+
+        //Insert new element before line breaks
+        form.insertBefore(clone, form.childNodes[form.childNodes.length - 6]);
+    }
+</script>

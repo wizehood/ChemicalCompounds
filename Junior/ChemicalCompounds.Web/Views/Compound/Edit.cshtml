@@ -1,0 +1,93 @@
+﻿@model ChemicalCompounds.SharedModels.DtoModels.CompoundElementPartialDto
+
+@{
+    ViewBag.Title = "Edit compound";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Compound</h4>
+        <hr />
+
+        @Html.HiddenFor(model => model.CompoundId)
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TypeId, "Type", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.TypeId, new SelectList(ViewBag.Types, "Id", "Name"), htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        @for (int i = 0; i < Model.Elements.Count; i++)
+        {
+            @Html.HiddenFor(model => model.Elements[i].CompoundElementId)
+
+            <div class="form-group chemical-element">
+                @Html.LabelFor(model => model.Elements[i].Quantity, "Element quantity", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.Elements[i].Quantity, htmlAttributes: new { @type = "number", @min = "1", @class = "form-control", style = "width:5em" })
+                </div>
+                <div class="col-md-2">
+                    @Html.DropDownListFor(model => model.Elements[i].Id, new SelectList(ViewBag.ElementNames, "Id", "Name", Model.Elements[i].Id), htmlAttributes: new { @class = "form-control" })
+                </div>
+            </div>
+        }
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Boiling temperature</label>
+            <div class="col-md-2">
+                <input id="boilingTemperature" class="form-control" disabled>
+            </div>
+            <div class="col-md-1">
+                @Html.DropDownList("TemperatureType", new SelectList(ViewBag.TemperatureTypes, "Value", "Text", 1), htmlAttributes: new { @onchange = "getBoilingPoint(event.target.value)", @class = "form-control" })
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    $(document).ready(function () {
+        getBoilingPoint(TemperatureType.value);
+    });
+
+    var getBoilingPoint = function (temperatureTypeId) {
+        $.get("/Compound/GetBoilingTemperature?compoundId=" + CompoundId.value + "&type=" + temperatureTypeId)
+            .done(function (data) {
+                boilingTemperature.value = data;
+            })
+            .fail(function () {
+                alert("Error occured while fetching data.");
+            })
+    }
+</script>
